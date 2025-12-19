@@ -6,3 +6,5 @@ metadata:
 spec:
   type: ExternalName
   externalName: argocd-server.argocd.svc.cluster.local
+  ports:
+    - port: 8080 # <--- AGGIUNGI O CAMBIA IN 8080

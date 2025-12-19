@@ -2,9 +2,9 @@
 argo-cd:
   global:
     image:
-      repository: bitnami/argo-cd
-      tag: 2.13.3-debian-12-r0 # Versione stabile e sicura a fine 2025
-      pullPolicy: IfNotPresent
+      repository: quay.io/argoproj/argocd
+      tag: v2.13.3
+      pullPolicy: IfNotPresen
   
   # Sicurezza per il Server API (Dashboard)
   server:
