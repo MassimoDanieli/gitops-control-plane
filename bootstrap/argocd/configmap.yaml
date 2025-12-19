@@ -1,16 +1,17 @@
----
-# ConfigMap: argocd-cm (add or merge the following)
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: argocd-cm
+  name: argocd-bootstrap-values
   namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-bootstrap
+    app.kubernetes.io/part-of: gitops
 data:
-  configManagementPlugins: |
-    - name: ksops
-      generate:
-        command: [sh, -c]
-        args: ["kustomize build --enable-alpha-plugins"]
-  repositories: |-
-    - url: https://pajikos.github.io/home-assistant-helm-chart/
-      name: home-assistant
+  appName: gitops-root
+  # PUNTA AL TUO FORK
+  repoURL: https://github.com/MassimoDanieli/gitops-control-plane.git
+  # PUNTA AL TUO BRANCH
+  targetRevision: feat/hardened-bootstrap
+  appPath: bootstrap/hub
+  clusterName: hub
+  argocdNamespace: argocd
